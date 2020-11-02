@@ -32,7 +32,7 @@ public class ThreadNameDemo {
          *
          * run start
          * in run: Thread.currentThread.getName=A
-         * in run: this.getName=operationThread
+         * in run: this.getName=operationThread     // 此处与constructor中不同，因为在构造函数之后，设置了name
          * run end
          */
     }
