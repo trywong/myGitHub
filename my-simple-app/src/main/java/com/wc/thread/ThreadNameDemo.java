@@ -13,11 +13,7 @@ public class ThreadNameDemo {
 
         OperationThread operationThread = new OperationThread();
         operationThread.setName("operationThread");
-
-        Thread t = new Thread(operationThread);
-        t.setName("A");
-        // System.out.println("before start");
-        t.start();
+        operationThread.start();
 
         System.out.println("main end");
 
@@ -31,7 +27,7 @@ public class ThreadNameDemo {
          * main end
          *
          * run start
-         * in run: Thread.currentThread.getName=A
+         * in run: Thread.currentThread.getName=operationThread
          * in run: this.getName=operationThread     // 此处与constructor中不同，因为在构造函数之后，设置了name
          * run end
          */
@@ -43,7 +39,6 @@ class OperationThread extends Thread {
         System.out.println("constructor start");
         // 当前被哪个线程调用，构造函数在main线程中调用
         System.out.println("in constructor: Thread.currentThread.getName=" + Thread.currentThread().getName());
-        // OperationThread的线程实例名
         System.out.println("in constructor: this.getName=" + this.getName());
         System.out.println("constructor end");
     }
@@ -52,8 +47,9 @@ class OperationThread extends Thread {
     public void run() {
         System.out.println("run start");
 
-        // 当前被哪个线程调用，run()在t.start()之后调用，由t线程调用
+        // 当前被哪个线程调用，run()在operationThread.start()之后调用，由operationThread线程调用
         System.out.println("in run: Thread.currentThread.getName=" + Thread.currentThread().getName());
+        // OperationThread的线程实例名operationThread
         System.out.println("in run: this.getName=" + this.getName());
 
         System.out.println("run end");
