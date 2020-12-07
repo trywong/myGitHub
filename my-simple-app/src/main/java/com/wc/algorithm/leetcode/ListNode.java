@@ -1,4 +1,4 @@
-package com.wc.algorithm;
+package com.wc.algorithm.leetcode;
 
 public class ListNode {
     int val;

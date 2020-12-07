@@ -1,7 +1,5 @@
 package com.wc.algorithm.leetcode;
 
-import com.wc.algorithm.ListNode;
-
 /**
  * 反转一个单链表。
  *
