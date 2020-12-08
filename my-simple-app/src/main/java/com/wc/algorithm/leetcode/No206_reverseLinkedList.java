@@ -39,6 +39,25 @@ public class No206_reverseLinkedList {
         return pre;
     }
 
+    /**
+     * 只是代码简洁，不建议用递归实现
+     * @param head
+     * @return
+     */
+    public ListNode reverseList1(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        // 认为head之后的序列已经反转完成，即 head-->1->    2<-3<-4<-5<--last
+        //                                            |
+        //                                          NULL
+        ListNode last = reverseList1(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
+    }
+
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
@@ -52,7 +71,7 @@ public class No206_reverseLinkedList {
         System.out.println(ListNode.toString(node1));
 
         No206_reverseLinkedList no206 = new No206_reverseLinkedList();
-        ListNode reverseList = no206.reverseList(node1);
+        ListNode reverseList = no206.reverseList1(node1);
         System.out.println(ListNode.toString(reverseList));
     }
 }
